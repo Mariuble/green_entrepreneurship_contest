@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer, Polyline } from 'react-leaflet';
 import locations from '../data/locations.json';
+import { Box } from '@chakra-ui/react';
+import { LatLngExpression } from 'leaflet';
 
 const fs = require('fs');
 
@@ -43,27 +45,30 @@ const Map = () => {
 */
 
     console.log(locations);
-    const foo = locations.filter((loc, i) => i < 100);
+    const foo = locations
+        //.filter((loc, i) => i < 1000)
+        .map((loc) => [parseFloat(loc.latitude), parseFloat(loc.longitude)] as LatLngExpression);
     console.log(foo);
-    return (
-        <MapContainer
-            center={[parseFloat(foo[0].latitude), parseFloat(foo[0].longitude)]}
-            zoom={13}
-            scrollWheelZoom={false}
-        >
-            <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
 
-            {foo.map((loc, i) => (
-                <Marker
-                    key={`${loc.latitude}${loc.longitude}`}
-                    position={[parseFloat(loc.latitude), parseFloat(loc.longitude)]}
-                ></Marker>
-            ))}
-        </MapContainer>
+    return (
+        <Box bg="tomato" w="100%" p={4} color="white">
+            <MapContainer center={[0, 0]} zoom={13} scrollWheelZoom={true}>
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Polyline positions={foo} color={'red'} />
+            </MapContainer>
+        </Box>
     );
 };
 
 export default Map;
+/*
+{foo.map((loc, i) => (
+  <Marker
+      key={`${loc.latitude}${loc.longitude}`}
+      position={[parseFloat(loc.latitude), parseFloat(loc.longitude)]}
+  ></Marker>
+))}
+*/
