@@ -1,21 +1,43 @@
-export type VoyageLegs = {
-  VesselName: String;
-  PORT_UN_FROM: String;
-  PORT_UN_TO: String;
-  HOURS_UNDERWAY: number;
-  total_distance: number;
-  CARGO_to_DWT_pct: number;
-  Total_CO2: number;
-  StandardShipDesign: String;
-  VesselTypeGroup: String;
+export type ShipRaw = {
+    vesselName: string;
+    from: string;
+    to: string;
+    hoursUnderway: string;
+    totalDistance: string;
+    cargoToDwtPct: string;
+    totalCO2: string;
+    standardShipDesign: string;
+    vesselTypeGroup: string;
 };
 
-export type AISPOSITION = {
-  VesselName: String;
-  From: String;
-  To: String;
-  LoadingCondition: String;
-  hoursSinceLastPosition: number;
-  longitude: number;
-  latitude: number;
+export type Ship = {
+    vesselName: string;
+    from: string;
+    to: string;
+    hoursUnderway: number;
+    totalDistance: number;
+    cargoToDwtPct: number;
+    totalCO2: number;
+    standardShipDesign: string;
+    vesselTypeGroup: string;
+};
+
+export type LocationRaw = {
+    vesselName: string;
+    from: string;
+    to: string;
+    loadingCondition: string;
+    hoursSinceLastPosition: string;
+    longitude: string;
+    latitude: string;
+};
+
+export type Location = {
+    vesselName: string;
+    from: string;
+    to: string;
+    loadingCondition: string;
+    hoursSinceLastPosition: number;
+    longitude: number;
+    latitude: number;
 };
