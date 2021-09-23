@@ -43,8 +43,12 @@ const Map = () => {
     }
   );
 */
-
     console.log(locations);
+
+    const positionNow = locations
+        .filter((s) => s['hours since last position [h]'] === '0')
+        .map((loc) => [parseFloat(loc.latitude), parseFloat(loc.longitude)] as LatLngExpression);
+
     const foo = locations
         //.filter((loc, i) => i < 1000)
         .map((loc) => [parseFloat(loc.latitude), parseFloat(loc.longitude)] as LatLngExpression);
@@ -58,6 +62,9 @@ const Map = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <Polyline positions={foo} color={'red'} />
+                {positionNow.map((loc) => (
+                    <Marker key={`${loc.toString}`} position={loc}></Marker>
+                ))}
             </MapContainer>
         </Box>
     );
