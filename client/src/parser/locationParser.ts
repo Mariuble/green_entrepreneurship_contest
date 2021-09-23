@@ -9,6 +9,7 @@ const foo = (): Array<Location> => {
             longitude: parseFloat(data.longitude),
             latitude: parseFloat(data.latitude),
             hoursSinceLastPosition: parseInt(data.hoursSinceLastPosition),
+            coordinates: [parseFloat(data.latitude), parseFloat(data.longitude)],
         } as Location;
     });
 };

@@ -1,12 +1,11 @@
 import React from 'react';
 import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
 import { Box } from '@chakra-ui/react';
-import { LatLngExpression } from 'leaflet';
 import locationParser from '../parser/locationParser';
 import shipParser from '../parser/shipParser';
 
 const Map = () => {
-    const locations = locationParser().map((loc) => [loc.latitude, loc.longitude] as LatLngExpression);
+    const locations = locationParser().map((loc) => loc.coordinates);
     const ships = shipParser();
 
     // const foo = locations
