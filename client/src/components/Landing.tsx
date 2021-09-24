@@ -3,10 +3,8 @@ import { Box } from '@chakra-ui/react';
 import Search from './Search';
 
 const Landing = () => {
-    const [animate, setAnimate] = useState({});
-
     const handleSearch = () => {
-        document.getElementById('vessel')?.scrollIntoView();
+        document.getElementById('vessel')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
