@@ -34,7 +34,7 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time, avgCost, a
             }}
             _hover={{ cursor: 'pointer' }}
             style={{
-                backgroundColor: isSelected() ? 'green' : 'white',
+                backgroundColor: isSelected() ? 'rgb(63, 156, 53)' : 'white',
             }}
         >
             <Td>{`${vesselName} ${recommended ? '🌎' : ''}`}</Td>
