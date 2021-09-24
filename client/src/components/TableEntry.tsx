@@ -28,7 +28,7 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time }: TableEnt
             <Td>{`${vesselName} ${recommended ? '🌎' : ''}`}</Td>
             <Td>
                 <Flex>
-                    {`${co2.toFixed(2)} tonnes Co2`}
+                    {`${co2.toFixed(2)} [t] Co2`}
                     {co2 > 5000 ? (
                         <AiFillWarning color="red" />
                     ) : co2 > 4500 ? (
@@ -41,9 +41,9 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time }: TableEnt
             <Td>
                 <Flex>
                     {formatMoney(cost)}{' '}
-                    {cost > 60000000 ? (
+                    {cost > 38000000 ? (
                         <AiFillWarning color="red" />
-                    ) : cost > 58000000 ? (
+                    ) : cost > 37000000 ? (
                         <AiOutlineExclamationCircle color="orange" />
                     ) : (
                         <AiFillCheckCircle color={dnvgreenlight} />
@@ -53,9 +53,9 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time }: TableEnt
             <Td>
                 <Flex>
                     {`${time.toFixed(0)} hours`}{' '}
-                    {time > 500 ? (
+                    {time > 1300 ? (
                         <AiFillWarning color="red" />
-                    ) : time > 490 ? (
+                    ) : time > 1200 ? (
                         <AiOutlineExclamationCircle color="orange" />
                     ) : (
                         <AiFillCheckCircle color={dnvgreenlight} />
