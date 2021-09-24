@@ -1,7 +1,7 @@
 import ships from '../data/ships.json';
 import { Ship, ShipRaw } from '../types/data';
 
-const foo = (): Array<Ship> => {
+const parser = (): Array<Ship> => {
     const rawData = ships as Array<ShipRaw>;
     return rawData.map((data) => {
         return {
@@ -14,4 +14,4 @@ const foo = (): Array<Ship> => {
     });
 };
 
-export default foo;
+export default parser;

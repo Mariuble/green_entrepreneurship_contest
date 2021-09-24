@@ -1,4 +1,4 @@
-import { LatLngExpression } from 'leaflet';
+import { LatLngTuple } from 'leaflet';
 
 export type ShipRaw = {
     vesselName: string;
@@ -42,5 +42,5 @@ export type Location = {
     hoursSinceLastPosition: number;
     longitude: number;
     latitude: number;
-    coordinates: LatLngExpression;
+    coordinates: LatLngTuple;
 };
