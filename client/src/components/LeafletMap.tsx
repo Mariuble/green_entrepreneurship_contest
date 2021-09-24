@@ -12,7 +12,7 @@ const Map = () => {
     console.log(routes.length);
 
     return (
-        <Box bg="tomato" w="100%" p={4} color="white" style={{ position: 'fixed', top: 0, left: 0 }}>
+        <Box w="100%" p={4} color="white">
             <MapContainer center={[0, 0]} zoom={3} scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

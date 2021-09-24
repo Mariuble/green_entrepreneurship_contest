@@ -1,1 +1,1 @@
-export default (money: number): string => `€${(money / 1000000).toFixed(2).toString()}M`;
+export default (money: number): string => `€${(money / 1000).toFixed(2).toString()}k`;

@@ -19,7 +19,7 @@ const generateInitialState = (): ShipDataState => {
     const toUs = ships
         .filter((ship) => ship.to === START)
         .map((ship) => {
-            return { ...ship, co2: ship.totalCO2, time: ship.hoursUnderway };
+            return { ...ship, co2: ship.totalCO2, time: ship.hoursUnderway / 24 };
         });
     const fromUs = ships
         .filter((ship) => ship.from === START)
@@ -28,11 +28,13 @@ const generateInitialState = (): ShipDataState => {
         });
 
     const extendedShips = toUs.map((ship, i) => {
+        let estimatedTimeToUS = fromUs[i].time * 24 * (ship.totalDistance / ship.hoursUnderway / 12.828);
+
         return {
             ...ship,
-            co2: ship.co2 + fromUs[i].co2,
-            time: fromUs[i].time,
-            cost: DAILY_RATE * (ship.time + fromUs[i].time),
+            co2: ship.co2 + (ship.co2 / (ship.time * 24)) * estimatedTimeToUS,
+            time: ship.time * 24 + estimatedTimeToUS,
+            cost: DAILY_RATE * estimatedTimeToUS,
         };
     });
 

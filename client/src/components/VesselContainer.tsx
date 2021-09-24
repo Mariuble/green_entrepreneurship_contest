@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { ShipContext } from '../context/ShipContext';
+import { Flex, Box, Spacer, Center } from '@chakra-ui/react';
 import Vessel from './Vessel';
+import LeafletMap from './LeafletMap';
+import TableEntry from './TableEntry';
 
 const VesselContainer = () => {
     const { ships } = useContext(ShipContext).state;
@@ -12,17 +15,27 @@ const VesselContainer = () => {
     const avgCo2 = ships.reduce<number>((sum, curr) => sum + curr.co2, 0) / 6;
 
     return (
-        <div id="vessel">
-            {ships.map((ship, i) => (
-                <Vessel
-                    ship={ship}
-                    recommended={i === 0 ? true : false}
-                    avgCost={avgCost}
-                    avgTime={avgTime}
-                    avgCo2={avgCo2}
-                />
-            ))}
-        </div>
+        <Box h="100vh">
+            <Flex direction="row">
+                <Box w="80%">
+                    <Vessel>
+                        {ships.map((ship, i) => (
+                            <TableEntry
+                                vesselName={ship.vesselName}
+                                recommended={i === 0 ? true : false}
+                                co2={ship.co2}
+                                cost={ship.cost}
+                                time={ship.time}
+                                avgCost={avgCost}
+                                avgTime={avgTime}
+                                avgCo2={avgCo2}
+                            />
+                        ))}
+                    </Vessel>
+                </Box>
+                <LeafletMap />
+            </Flex>
+        </Box>
     );
 };
 
