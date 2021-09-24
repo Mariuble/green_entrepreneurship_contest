@@ -45,7 +45,7 @@ const Map = () => {
     console.log(total);
 
     return (
-        <Box bg="tomato" w="100%" p={4} color="white">
+        <Box w="100%" p={4} color="white">
             <MapContainer center={[0, 0]} zoom={3} scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -10,7 +10,7 @@ const generateInitialState = (): ShipDataState => {
     const ships = shipParser();
 
     const distanceUsToChina = ships[9].totalDistance;
-    const timeToChina = ships[9].hoursUnderway;
+    const timeToChina = ships[9].hoursUnderway / 24;
 
     const toUs = ships
         .filter((ship) => ship.to === START)
@@ -28,7 +28,7 @@ const generateInitialState = (): ShipDataState => {
             ...ship,
             co2: ship.co2 + fromUs[i].co2,
             time: ship.time + fromUs[i].time,
-            cost: DAILY_RATE * (ship.time + fromUs[i].time),
+            cost: DAILY_RATE * fromUs[i].time,
         };
     });
 
