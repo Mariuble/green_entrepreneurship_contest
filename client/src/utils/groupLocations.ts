@@ -1,6 +1,6 @@
 import { Location } from '../types/data';
 
-const foo = (locations: Array<Location>): Array<Array<Location>> => {
+const groupLocation = (locations: Array<Location>): Array<Array<Location>> => {
     const bar: Array<Array<Location>> = [[locations[0]]];
 
     let j = 0;
@@ -20,4 +20,4 @@ const foo = (locations: Array<Location>): Array<Array<Location>> => {
     return bar;
 };
 
-export default foo;
+export default groupLocation;
