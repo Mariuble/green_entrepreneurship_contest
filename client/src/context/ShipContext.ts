@@ -1,13 +1,17 @@
 import { createContext, Dispatch } from 'react';
-import { DispatchAction, DispatchActions, ShipDataState } from '../types/shipContext';
+import { DispatchAction, DispatchActions, Route, ShipDataState } from '../types/shipContext';
 import shipParser from '../parser/shipParser';
+import locationParser from '../parser/locationParser';
 import estimateCO2PerDistance from '../utils/estimateCO2PerDistance';
+import groupLocation from '../utils/groupLocations';
 
 const START = 'USMSY';
 const DAILY_RATE = 47273;
 
 const generateInitialState = (): ShipDataState => {
     const ships = shipParser();
+    const locations = locationParser();
+    const routes = groupLocation(locations);
 
     const distanceUsToChina = ships[9].totalDistance;
     const timeToChina = ships[9].hoursUnderway / 24;
@@ -27,14 +31,20 @@ const generateInitialState = (): ShipDataState => {
         return {
             ...ship,
             co2: ship.co2 + fromUs[i].co2,
-            time: ship.time + fromUs[i].time,
-            cost: DAILY_RATE * fromUs[i].time,
+            time: fromUs[i].time,
+            cost: DAILY_RATE * (ship.time + fromUs[i].time),
         };
     });
+
+    const routeFromUs = routes[9];
+    const routesToUs = routes.filter((route) => route[0].from === START);
 
     return {
         ships: extendedShips,
         selectedShip: null,
+        routeFromUs: routeFromUs,
+        allRoutesToUs: routesToUs,
+        selectedRouteToUs: null,
     };
 };
 
@@ -50,14 +60,17 @@ export const ShipContext = createContext(
 export const shipReducer = (state: ShipDataState, action: DispatchAction): ShipDataState => {
     switch (action.type) {
         case DispatchActions.SELECT_SHIP:
+            const route = state.allRoutesToUs.find((route) => route[0].vesselName === action.payload.vesselName);
             return {
                 ...state,
                 selectedShip: action.payload,
+                selectedRouteToUs: route,
             };
         case DispatchActions.CLEAR_SHIP:
             return {
                 ...state,
                 selectedShip: null,
+                selectedRouteToUs: null,
             };
     }
 };
