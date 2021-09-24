@@ -3,6 +3,7 @@ import { Location, LocationRaw } from '../types/data';
 
 const parser = (): Array<Location> => {
     const rawData = locations as Array<LocationRaw>;
+    console.log('parsing');
     return rawData.map((data) => {
         return {
             ...data,

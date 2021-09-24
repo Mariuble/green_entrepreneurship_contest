@@ -33,7 +33,7 @@ const Vessel = ({ ship }: Props) => {
     const { vesselName, co2, cost, time } = ship;
     const { dispatch } = useContext(ShipContext);
     return (
-        <Accordion allowToggle m={10}>
+        <Accordion allowToggle m={10} onClick={() => dispatch({ type: DispatchActions.SELECT_SHIP, payload: ship })}>
             <AccordionItem>
                 <AccordionButton
                     h={'-webkit-fit-content'}

@@ -1,15 +1,38 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { MapContainer, Polyline, TileLayer } from 'react-leaflet';
 import { Box } from '@chakra-ui/react';
 import { ShipContext } from '../context/ShipContext';
 import fixWorldWrap from '../utils/fixWorldWrapIssues';
+import { Route } from '../types/shipContext';
 
 const Map = () => {
     const { state } = useContext(ShipContext);
 
+    const routes = useRef<Array<Route>>();
     // const routes = state.allRoutesToUs ? fixWorldWrap(state.allRoutesToUs) : [];
-    const routes = state.selectedRouteToUs ? fixWorldWrap([state.routeFromUs, state.selectedRouteToUs]) : [];
-    console.log(routes.length);
+    useEffect(() => {
+        // console.log('qwert');
+        // console.log(state.selectedRouteToUs);
+        // if (!routes) {
+        routes.current = state.selectedRouteToUs ? fixWorldWrap([state.routeFromUs, state.selectedRouteToUs]) : [];
+        // if (routes) return;
+
+        // routes.current =
+        // console.log('asdfkjhasdfkjh');
+        // }
+    }, [state]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            console.log(routes);
+            if (!routes || !routes.current) return;
+            routes.current = routes.current.map((route) => route.slice(2));
+            // setRoutes(newRoute);
+            // console.log(routes[0].length);
+        }, 100);
+    }, [routes, routes.current]);
+    // const routes = state.selectedRouteToUs ? fixWorldWrap([state.routeFromUs, state.selectedRouteToUs]) : [];
+    // console.log(routes);
 
     return (
         <Box bg="tomato" w="100%" p={4} color="white" style={{ position: 'fixed', top: 0, left: 0 }}>
@@ -18,7 +41,7 @@ const Map = () => {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {routes.map((route, i) => (
+                {routes?.current?.map((route, i) => (
                     <Polyline positions={route.map((r) => r.coordinates)} color={i < 2 ? 'blue' : 'red'} />
                 ))}
                 {/* //{state.selectedRouteToUs && ( */}
