@@ -28,9 +28,12 @@ const dnvgreenlight = '#65B33A';
 interface Props {
     ship: ShipExtended;
     recommended: boolean;
+    avgCost: number;
+    avgTime: number;
+    avgCo2: number;
 }
 
-const Vessel = ({ ship, recommended }: Props) => {
+const Vessel = ({ ship, recommended, avgCost, avgTime, avgCo2 }: Props) => {
     const { vesselName, co2, cost, time } = ship;
     const { dispatch } = useContext(ShipContext);
     return (
@@ -61,9 +64,9 @@ const Vessel = ({ ship, recommended }: Props) => {
                                 </GridItem>
                                 <GridItem p={5}>{`${co2.toFixed(2)} tonnes Co2`}</GridItem>
                                 <GridItem justifyContent="center" display="flex">
-                                    {co2 > 5000 ? (
+                                    {co2 > avgCo2 + 200 ? (
                                         <AiFillWarning color="red" />
-                                    ) : co2 > 4500 ? (
+                                    ) : co2 > avgCo2 ? (
                                         <AiOutlineExclamationCircle color="orange" />
                                     ) : (
                                         <AiFillCheckCircle color={dnvgreenlight} />
@@ -78,9 +81,9 @@ const Vessel = ({ ship, recommended }: Props) => {
                                 </GridItem>
                                 <GridItem p={5}>{formatMoney(cost)}</GridItem>
                                 <GridItem justifyContent="center" display="flex">
-                                    {cost > 60000000 ? (
+                                    {cost > avgCost + 3500000 ? (
                                         <AiFillWarning color="red" />
-                                    ) : cost > 58000000 ? (
+                                    ) : cost > avgCost ? (
                                         <AiOutlineExclamationCircle color="orange" />
                                     ) : (
                                         <AiFillCheckCircle color={dnvgreenlight} />
@@ -95,9 +98,9 @@ const Vessel = ({ ship, recommended }: Props) => {
                                 </GridItem>
                                 <GridItem p={5}>{`${time.toFixed(0)} hours`}</GridItem>
                                 <GridItem justifyContent="center" display="flex">
-                                    {time > 1500 ? (
+                                    {time > avgTime + 200 ? (
                                         <AiFillWarning color="red" />
-                                    ) : time > 1350 ? (
+                                    ) : time > avgTime ? (
                                         <AiOutlineExclamationCircle color="orange" />
                                     ) : (
                                         <AiFillCheckCircle color={dnvgreenlight} />
