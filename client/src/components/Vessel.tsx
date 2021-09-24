@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     Accordion,
     AccordionItem,
@@ -15,7 +15,8 @@ import {
 } from '@chakra-ui/react';
 import { AiFillCheckCircle, AiFillWarning, AiOutlineExclamationCircle } from 'react-icons/ai';
 import formatMoney from '../utils/formatMoney';
-import { ShipExtended } from '../types/shipContext';
+import { DispatchActions, ShipExtended } from '../types/shipContext';
+import { ShipContext } from '../context/ShipContext';
 // import { CheckIcon } from '@chakra-ui/icons'
 
 const dnvbluedark = '#002A3E';
@@ -29,6 +30,7 @@ interface Props {
 
 const Vessel = ({ ship }: Props) => {
     const { vesselName, co2, cost, time } = ship;
+    const { dispatch } = useContext(ShipContext);
     return (
         <Accordion allowToggle m={10}>
             <AccordionItem>

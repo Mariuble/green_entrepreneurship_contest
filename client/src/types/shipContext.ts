@@ -1,4 +1,4 @@
-import { Ship } from './data';
+import { Location, Ship } from './data';
 
 export type ShipExtended = Ship & {
     co2: number;
@@ -6,9 +6,14 @@ export type ShipExtended = Ship & {
     cost: number;
 };
 
+export type Route = Array<Location>;
+
 export type ShipDataState = {
     ships: Array<ShipExtended> | null | undefined;
     selectedShip: ShipExtended | null | undefined;
+    routeFromUs: Route;
+    allRoutesToUs: Array<Route>;
+    selectedRouteToUs: Route | null | undefined;
 };
 
 export enum DispatchActions {
