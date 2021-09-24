@@ -14,6 +14,7 @@ import {
     Flex,
 } from '@chakra-ui/react';
 import { AiFillCheckCircle, AiFillWarning, AiOutlineExclamationCircle } from 'react-icons/ai';
+import formatMoney from '../utils/formatMoney';
 // import { CheckIcon } from '@chakra-ui/icons'
 
 const dnvbluedark = '#002A3E';
@@ -56,7 +57,7 @@ const Vessel = ({ vesselName, co2, time, cost }: Props) => (
                                 <StatLabel color={dnvgreendark} fontSize="small">
                                     Price:
                                 </StatLabel>
-                                <StatNumber m={10}>{`$${cost.toFixed(0)}`}</StatNumber>
+                                <StatNumber m={10}>{formatMoney(cost)}</StatNumber>
                                 {cost > 55000 ? (
                                     <AiFillWarning color="#red" />
                                 ) : cost > 45000 ? (
