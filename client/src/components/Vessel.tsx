@@ -27,9 +27,10 @@ const dnvgreenlight = '#65B33A';
 
 interface Props {
     ship: ShipExtended;
+    recommended: boolean;
 }
 
-const Vessel = ({ ship }: Props) => {
+const Vessel = ({ ship, recommended }: Props) => {
     const { vesselName, co2, cost, time } = ship;
     const { dispatch } = useContext(ShipContext);
     return (
@@ -47,7 +48,7 @@ const Vessel = ({ ship }: Props) => {
                     <Grid templateColumns="repeat(4, 1fr)" w="100%" justifyContent="space-around" color="#002A3E">
                         <Box>
                             <Grid>
-                                <GridItem>{`${vesselName}`}</GridItem>
+                                <GridItem>{`${vesselName} ${recommended ? '🌎' : ''}`}</GridItem>
                                 <GridItem display="flex" justifyContent="center" textAlign="center">
                                     <GiShipWheel size="2em" />
                                 </GridItem>
