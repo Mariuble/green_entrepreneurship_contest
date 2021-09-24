@@ -1,6 +1,6 @@
 import React from 'react';
-import { MapContainer, TileLayer, Polyline } from 'react-leaflet';
-import { Box, ChakraProvider } from '@chakra-ui/react';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import { Box } from '@chakra-ui/react';
 import locationParser from '../parser/locationParser';
 import shipParser from '../parser/shipParser';
 import groupLocations from '../utils/groupLocations';

@@ -46,11 +46,8 @@ const closest = (position: LatLngTuple, routes: Array<Array<Location>>): RouteWi
         .map(findMinDistance)
         .filter(filterSameRoute);
     const bestRoute = findClosestRoute(routesWithMinDistance);
-    console.log(bestRoute);
     const filtered = bestRoute.route.filter((_, i) => i >= bestRoute.index);
     bestRoute.route = filtered;
-    // return findClosestRoute(routesWithMinDistance).map((c) => c.route.filter)
-    console.log(bestRoute);
     return bestRoute;
 };
 

@@ -15,6 +15,9 @@ import {
 } from '@chakra-ui/react';
 import { AiFillCheckCircle, AiFillWarning, AiOutlineExclamationCircle } from 'react-icons/ai';
 import { GiShipWheel } from 'react-icons/gi';
+import formatMoney from '../utils/formatMoney';
+import { ShipExtended } from '../types/shipContext';
+// import { CheckIcon } from '@chakra-ui/icons'
 
 const dnvbluedark = '#002A3E';
 const dnvbluelight = '#8CD3EF';
@@ -22,15 +25,12 @@ const dnvgreendark = 'rgb(63, 156, 53)';
 const dnvgreenlight = '#65B33A';
 
 interface Props {
-    vesselName: string;
-    co2: number;
-    time: number;
-    cost: number;
+    ship: ShipExtended;
 }
 
-// const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, distance: 300 } }) => (
-const Vessel = ({ vesselName, co2, time, cost }: Props) => (
-    <div>
+const Vessel = ({ ship }: Props) => {
+    const { vesselName, co2, cost, time } = ship;
+    return (
         <Accordion allowToggle m={10}>
             <AccordionItem>
                 <AccordionButton h={110} p={4} borderRadius="10" fontWeight="bold" fontSize="large" bg="white" top={0}>
@@ -65,7 +65,7 @@ const Vessel = ({ vesselName, co2, time, cost }: Props) => (
                                 <StatLabel color={dnvgreendark} fontSize="small">
                                     Price:
                                 </StatLabel>
-                                <StatNumber m={10}>{`$${cost.toFixed(0)}`}</StatNumber>
+                                <StatNumber m={10}>{formatMoney(cost)}</StatNumber>
                                 {cost > 55000 ? (
                                     <AiFillWarning color="red" />
                                 ) : cost > 45000 ? (
@@ -138,7 +138,7 @@ const Vessel = ({ vesselName, co2, time, cost }: Props) => (
                 </AccordionPanel>
             </AccordionItem>
         </Accordion>
-    </div>
-);
+    );
+};
 
 export default Vessel;
