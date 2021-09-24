@@ -1,0 +1,134 @@
+[
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Eco (06)",
+        "totalDistance": "6029.1",
+        "hoursUnderway": "450.8",
+        "from": "ITTAR",
+        "standardShipDesign": "Sanoyas 83000",
+        "cargoToDwtPct": "0",
+        "to": "USMSY",
+        "totalCO2": "1950.6486"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Eco (06)",
+        "totalDistance": "15011",
+        "hoursUnderway": "1352.5",
+        "from": "USMSY",
+        "standardShipDesign": "Sanoyas 83000",
+        "cargoToDwtPct": "84.71564345",
+        "to": "CNZOS",
+        "totalCO2": "4914.8987"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Green (13)",
+        "totalDistance": "16071",
+        "hoursUnderway": "1368.4",
+        "from": "USMSY",
+        "standardShipDesign": "Kamsarmax",
+        "cargoToDwtPct": "82.48104789",
+        "to": "CNJIN",
+        "totalCO2": "4450.924"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Green (13)",
+        "totalDistance": "5541",
+        "hoursUnderway": "550.0066667",
+        "from": "DEHAM",
+        "standardShipDesign": "Kamsarmax",
+        "cargoToDwtPct": "0",
+        "to": "USMSY",
+        "totalCO2": "1509.3382"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Sustainable (15)",
+        "totalDistance": "5175",
+        "hoursUnderway": "448",
+        "from": "DEHAM",
+        "standardShipDesign": "Hyundai 82BC",
+        "cargoToDwtPct": "0",
+        "to": "USMSY",
+        "totalCO2": "1373.7468"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Sustainable (15)",
+        "totalDistance": "14460",
+        "hoursUnderway": "1366.6",
+        "from": "USMSY",
+        "standardShipDesign": "Hyundai 82BC",
+        "cargoToDwtPct": "84.49295281",
+        "to": "CNZHA",
+        "totalCO2": "4010.1921"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Gren (17)",
+        "totalDistance": "6302",
+        "hoursUnderway": "578.2166667",
+        "from": "ITBDS",
+        "standardShipDesign": "Sungdong 82BC",
+        "cargoToDwtPct": "0",
+        "to": "USMSY",
+        "totalCO2": "1614.5756"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Gren (17)",
+        "totalDistance": "10740",
+        "hoursUnderway": "1056.666667",
+        "from": "USMSY",
+        "standardShipDesign": "Sungdong 82BC",
+        "cargoToDwtPct": "85.01179303",
+        "to": "CNZOS",
+        "totalCO2": "3275.4518"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Innovation (24)",
+        "totalDistance": "5640",
+        "hoursUnderway": "451.6",
+        "from": "DEBKE",
+        "standardShipDesign": "Kamsarmax",
+        "cargoToDwtPct": "0",
+        "to": "USMSY",
+        "totalCO2": "1537.9559"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Innovation (24)",
+        "totalDistance": "10471.5",
+        "hoursUnderway": "816.3",
+        "from": "USMSY",
+        "standardShipDesign": "Kamsarmax",
+        "cargoToDwtPct": "85.20360774",
+        "to": "CNTSN",
+        "totalCO2": "3586.2561"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Ocean (30)",
+        "totalDistance": "5913.4",
+        "hoursUnderway": "396.3",
+        "from": "ITPTO",
+        "standardShipDesign": "SDARI KMAX 82",
+        "cargoToDwtPct": "0",
+        "to": "USMSY",
+        "totalCO2": "1332.7828"
+    },
+    {
+        "vesselTypeGroup": "Bulk Carrier-Pmax/Kamsarmax",
+        "vesselName": "M/S Ocean (30)",
+        "totalDistance": "9744.33",
+        "hoursUnderway": "743.25",
+        "from": "USMSY",
+        "standardShipDesign": "SDARI KMAX 82",
+        "cargoToDwtPct": "88.54129281",
+        "to": "CNZOS",
+        "totalCO2": "3256.5693"
+    }
+]
