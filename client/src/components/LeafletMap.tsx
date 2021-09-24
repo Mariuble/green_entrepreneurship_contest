@@ -4,11 +4,16 @@ import { Box } from '@chakra-ui/react';
 import locationParser from '../parser/locationParser';
 // import shipParser from '../parser/shipParser';
 import groupLocations from '../utils/groupLocations';
+import closestPoint from '../utils/closestPoint';
 
 const Map = () => {
     const locations = locationParser();
-    // const coordinates = locations.map((loc) => loc.coordinates);
     const mappedLocations = groupLocations(locations);
+    const destination = 'CNTSN';
+    const start = 'USMSY';
+    const filteredLocations = mappedLocations.filter((loc) => loc[0].to === destination);
+    const closestRoute = closestPoint(mappedLocations[7][0].coordinates, filteredLocations);
+
     // const ships = shipParser();
 
     // const foo = locations
@@ -25,6 +30,7 @@ const Map = () => {
                 {mappedLocations.map((loc) => (
                     <Polyline positions={loc.map((l) => l.coordinates)} color={'red'} />
                 ))}
+                <Polyline positions={closestRoute.route.map((l) => l.coordinates)} color={'blue'} />
                 {/* <Polyline positions={coordinates} color={'red'} /> */}
             </MapContainer>
         </Box>
