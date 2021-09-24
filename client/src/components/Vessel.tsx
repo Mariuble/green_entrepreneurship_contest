@@ -11,6 +11,7 @@ import {
     Stat,
     StatLabel,
     StatNumber,
+    Flex,
 } from '@chakra-ui/react';
 import { AiFillCheckCircle, AiFillWarning, AiOutlineExclamationCircle } from 'react-icons/ai';
 // import { CheckIcon } from '@chakra-ui/icons'
@@ -24,15 +25,15 @@ const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, di
     <div>
         <Accordion allowToggle m={10}>
             <AccordionItem>
-                <AccordionButton h={150} p={4} borderRadius="10" fontWeight="bold" fontSize="large" bg="white" top={0}>
+                <AccordionButton h={110} p={4} borderRadius="10" fontWeight="bold" fontSize="large" bg="white" top={0}>
                     <Grid
-                        // templateRows="repeat(2, 1fr)"
-                        templateColumns="repeat(3, 1fr)"
+                        templateColumns="repeat(4, 1fr)"
                         w="100%"
                         justifyContent="space-around"
                         color="#002A3E"
+                        p={10}
                     >
-                        <GridItem textAlign="left" verticalAlign="top" colSpan={3}>{`${vessel.name}`}</GridItem>
+                        <Box textAlign="left" verticalAlign="top" left={0}>{`${vessel.name}`}</Box>
                         <Box>
                             <Stat>
                                 <StatLabel color={dnvgreendark} fontSize="small">
@@ -69,19 +70,48 @@ const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, di
                     </Grid>
                     <AccordionIcon w={40} h={40} color={dnvbluedark} />
                 </AccordionButton>
+
                 <AccordionPanel
                     p={4}
                     mx={10}
                     color="#002A3E"
-                    // border="solid #AAAAAA 1px"
+                    border="1px solid"
                     borderTop="0"
-                    rounded="lg"
-                    bg="white"
                     borderBottomRadius="10"
                     textAlign="left"
                     h={200}
+                    boxShadow="outline"
+                    rounded="lg"
+                    bg="white"
                 >
-                    {`Price`}
+                    <Flex
+                        templateRows="repeat(3, 1fr)"
+                        templateColumns="repeat(2, 1fr)"
+                        justifyContent="space-between"
+                        px={40}
+                        textAlign="center"
+                        flexDirection="row"
+                    >
+                        <Flex flexDirection="column">
+                            <Box boxShadow="xs" p="6" rounded="md" bg="white" border="1px solid grey" m={0}>
+                                <Stat>
+                                    <StatLabel color={dnvgreendark} fontSize="small">
+                                        {`${Vessel.name}`}
+                                    </StatLabel>
+                                    <StatNumber m={10}>{`${vessel.distance}km`}</StatNumber>
+                                </Stat>
+                            </Box>
+                            <Box>
+                                <Stat>{`Kamsarmax`}</Stat>
+                            </Box>
+                            <Box>
+                                <Stat>{`${Vessel.name}`}</Stat>
+                            </Box>
+                        </Flex>
+                        <GridItem rowSpan={3} w={500} bg={dnvgreenlight}>
+                            Map
+                        </GridItem>
+                    </Flex>
                 </AccordionPanel>
             </AccordionItem>
         </Accordion>
