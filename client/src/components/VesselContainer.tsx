@@ -17,6 +17,7 @@ const VesselContainer = () => {
                     <Vessel>
                         {ships.map((ship, i) => (
                             <TableEntry
+                                ship={ship}
                                 vesselName={ship.vesselName}
                                 recommended={i === 0 ? true : false}
                                 co2={ship.co2}
