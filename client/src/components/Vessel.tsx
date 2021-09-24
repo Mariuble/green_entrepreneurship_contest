@@ -14,7 +14,7 @@ import {
     Flex,
 } from '@chakra-ui/react';
 import { AiFillCheckCircle, AiFillWarning, AiOutlineExclamationCircle } from 'react-icons/ai';
-// import { CheckIcon } from '@chakra-ui/icons'
+import { GiShipWheel } from 'react-icons/gi';
 
 const dnvbluedark = '#002A3E';
 const dnvbluelight = '#8CD3EF';
@@ -41,14 +41,23 @@ const Vessel = ({ vesselName, co2, time, cost }: Props) => (
                         color="#002A3E"
                         p={10}
                     >
-                        <Box textAlign="left" verticalAlign="top" left={0}>{`${vesselName}`}</Box>
+                        <Stat>
+                            <StatLabel>{`${vesselName}`}</StatLabel>
+                            <GiShipWheel size="2em" />
+                        </Stat>
                         <Box>
                             <Stat>
                                 <StatLabel color={dnvgreendark} fontSize="small">
                                     Emission:
                                 </StatLabel>
                                 <StatNumber m={10}>{`${co2.toFixed(2)} tonnes Co2`}</StatNumber>
-                                <AiFillCheckCircle color={dnvgreenlight} />
+                                {co2 > 5000 ? (
+                                    <AiFillWarning color="red" />
+                                ) : co2 > 4500 ? (
+                                    <AiOutlineExclamationCircle color="orange" />
+                                ) : (
+                                    <AiFillCheckCircle color={dnvgreenlight} />
+                                )}
                             </Stat>
                         </Box>
                         <Box>
@@ -58,7 +67,7 @@ const Vessel = ({ vesselName, co2, time, cost }: Props) => (
                                 </StatLabel>
                                 <StatNumber m={10}>{`$${cost.toFixed(0)}`}</StatNumber>
                                 {cost > 55000 ? (
-                                    <AiFillWarning color="#red" />
+                                    <AiFillWarning color="red" />
                                 ) : cost > 45000 ? (
                                     <AiOutlineExclamationCircle color="orange" />
                                 ) : (
@@ -72,7 +81,13 @@ const Vessel = ({ vesselName, co2, time, cost }: Props) => (
                                     Distance:
                                 </StatLabel>
                                 <StatNumber m={10}>{`${time.toFixed(0)} hours`}</StatNumber>
-                                <AiFillCheckCircle color={dnvgreenlight} />
+                                {time > 1500 ? (
+                                    <AiFillWarning color="red" />
+                                ) : time > 1350 ? (
+                                    <AiOutlineExclamationCircle color="orange" />
+                                ) : (
+                                    <AiFillCheckCircle color={dnvgreenlight} />
+                                )}
                             </Stat>
                         </Box>
                     </Grid>
