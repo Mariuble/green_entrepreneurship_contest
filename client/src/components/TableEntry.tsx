@@ -12,9 +12,12 @@ type TableEntryType = {
     co2: number;
     cost: number;
     time: number;
+    avgCost: number;
+    avgTime: number;
+    avgCo2: number;
 };
 
-const TableEntry = ({ ship, vesselName, recommended, co2, cost, time }: TableEntryType) => {
+const TableEntry = ({ ship, vesselName, recommended, co2, cost, time, avgCost, avgTime, avgCo2 }: TableEntryType) => {
     const dnvbluedark = '#002A3E';
     const dnvbluelight = '#8CD3EF';
     const dnvgreendark = 'rgb(63, 156, 53)';
@@ -29,9 +32,9 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time }: TableEnt
             <Td>
                 <Flex>
                     {`${co2.toFixed(2)} [t] Co2`}
-                    {co2 > 5000 ? (
+                    {co2 > avgCo2 + 200 ? (
                         <AiFillWarning color="red" />
-                    ) : co2 > 4500 ? (
+                    ) : co2 > avgCo2 ? (
                         <AiOutlineExclamationCircle color="orange" />
                     ) : (
                         <AiFillCheckCircle color={dnvgreenlight} />
@@ -41,9 +44,9 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time }: TableEnt
             <Td>
                 <Flex>
                     {formatMoney(cost)}{' '}
-                    {cost > 38000000 ? (
+                    {cost > avgCost + 3500000 ? (
                         <AiFillWarning color="red" />
-                    ) : cost > 37000000 ? (
+                    ) : cost > avgCost ? (
                         <AiOutlineExclamationCircle color="orange" />
                     ) : (
                         <AiFillCheckCircle color={dnvgreenlight} />
@@ -53,9 +56,9 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time }: TableEnt
             <Td>
                 <Flex>
                     {`${time.toFixed(0)} hours`}{' '}
-                    {time > 1300 ? (
+                    {time > avgTime + 200 ? (
                         <AiFillWarning color="red" />
-                    ) : time > 1200 ? (
+                    ) : time > avgTime ? (
                         <AiOutlineExclamationCircle color="orange" />
                     ) : (
                         <AiFillCheckCircle color={dnvgreenlight} />
