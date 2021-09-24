@@ -1,4 +1,4 @@
-import react, { useContext } from 'react';
+import react, { useContext, useState } from 'react';
 import { Td, Tr, Text, Box, Flex } from '@chakra-ui/react';
 import { AiFillCheckCircle, AiFillWarning, AiOutlineExclamationCircle } from 'react-icons/ai';
 import formatMoney from '../utils/formatMoney';
@@ -22,11 +22,20 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time, avgCost, a
     const dnvbluelight = '#8CD3EF';
     const dnvgreendark = 'rgb(63, 156, 53)';
     const dnvgreenlight = '#65B33A';
-    const { dispatch } = useContext(ShipContext);
+
+    const { state, dispatch } = useContext(ShipContext);
+    const isSelected = () => state.selectedShip && state.selectedShip.vesselName === vesselName;
+
     return (
         <Tr
-            onClick={() => dispatch({ type: DispatchActions.SELECT_SHIP, payload: ship })}
+            onClick={() => {
+                if (isSelected()) dispatch({ type: DispatchActions.CLEAR_SHIP });
+                else dispatch({ type: DispatchActions.SELECT_SHIP, payload: ship });
+            }}
             _hover={{ cursor: 'pointer' }}
+            style={{
+                backgroundColor: isSelected() ? 'green' : 'white',
+            }}
         >
             <Td>{`${vesselName} ${recommended ? '🌎' : ''}`}</Td>
             <Td>

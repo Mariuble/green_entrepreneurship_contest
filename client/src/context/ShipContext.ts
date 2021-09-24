@@ -62,13 +62,16 @@ export const ShipContext = createContext(
 export const shipReducer = (state: ShipDataState, action: DispatchAction): ShipDataState => {
     switch (action.type) {
         case DispatchActions.SELECT_SHIP:
-            const route = state.allRoutesToUs.find((route) => route[0].vesselName === action.payload.vesselName);
+            let route = state.allRoutesToUs.find((route) => route[0].vesselName === action.payload.vesselName);
+            // M/S Ocean is named 'M/S Ocean (30)' in vessel names data and 'M/S Ocean (24)' in location data, so we have to do this hack...
+            if (!route) route = state.allRoutesToUs[5];
             return {
                 ...state,
                 selectedShip: action.payload,
                 selectedRouteToUs: route,
             };
         case DispatchActions.CLEAR_SHIP:
+            console.log('Clear ship');
             return {
                 ...state,
                 selectedShip: null,
