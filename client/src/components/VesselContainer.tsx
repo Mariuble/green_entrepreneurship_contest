@@ -15,12 +15,13 @@ const VesselContainer = () => {
     const avgCo2 = ships.reduce<number>((sum, curr) => sum + curr.co2, 0) / 6;
 
     return (
-        <Box h="100vh">
+        <Box h="100vh" id="vessel">
             <Flex direction="row">
                 <Box w="80%">
                     <Vessel>
                         {ships.map((ship, i) => (
                             <TableEntry
+                                ship={ship}
                                 vesselName={ship.vesselName}
                                 recommended={i === 0 ? true : false}
                                 co2={ship.co2}

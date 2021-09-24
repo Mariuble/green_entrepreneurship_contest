@@ -1,9 +1,12 @@
-import react from 'react';
+import react, { useContext } from 'react';
 import { Td, Tr, Text, Box, Flex } from '@chakra-ui/react';
 import { AiFillCheckCircle, AiFillWarning, AiOutlineExclamationCircle } from 'react-icons/ai';
 import formatMoney from '../utils/formatMoney';
+import { DispatchActions, ShipExtended } from '../types/shipContext';
+import { ShipContext } from '../context/ShipContext';
 
 type TableEntryType = {
+    ship: ShipExtended;
     vesselName: string;
     recommended: boolean;
     co2: number;
@@ -14,13 +17,17 @@ type TableEntryType = {
     avgCo2: number;
 };
 
-const TableEntry = ({ vesselName, recommended, co2, cost, time, avgCost, avgTime, avgCo2 }: TableEntryType) => {
+const TableEntry = ({ ship, vesselName, recommended, co2, cost, time, avgCost, avgTime, avgCo2 }: TableEntryType) => {
     const dnvbluedark = '#002A3E';
     const dnvbluelight = '#8CD3EF';
     const dnvgreendark = 'rgb(63, 156, 53)';
     const dnvgreenlight = '#65B33A';
+    const { dispatch } = useContext(ShipContext);
     return (
-        <Tr _hover={{ cursor: 'pointer' }}>
+        <Tr
+            onClick={() => dispatch({ type: DispatchActions.SELECT_SHIP, payload: ship })}
+            _hover={{ cursor: 'pointer' }}
+        >
             <Td>{`${vesselName} ${recommended ? '🌎' : ''}`}</Td>
             <Td>
                 <Flex>
