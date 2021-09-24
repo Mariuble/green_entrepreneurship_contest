@@ -14,6 +14,7 @@ import {
     Flex,
 } from '@chakra-ui/react';
 import { AiFillCheckCircle, AiFillWarning, AiOutlineExclamationCircle } from 'react-icons/ai';
+import { GiShipWheel } from 'react-icons/gi';
 import formatMoney from '../utils/formatMoney';
 import { ShipExtended } from '../types/shipContext';
 // import { CheckIcon } from '@chakra-ui/icons'
@@ -40,14 +41,23 @@ const Vessel = ({ ship }: Props) => {
                         color="#002A3E"
                         p={10}
                     >
-                        <Box textAlign="left" verticalAlign="top" left={0}>{`${vesselName}`}</Box>
+                        <Stat>
+                            <StatLabel>{`${vesselName}`}</StatLabel>
+                            <GiShipWheel size="2em" />
+                        </Stat>
                         <Box>
                             <Stat>
                                 <StatLabel color={dnvgreendark} fontSize="small">
                                     Emission:
                                 </StatLabel>
-                                <StatNumber m={10}>{`${co2.toFixed(0)} tonnes Co2`}</StatNumber>
-                                <AiFillCheckCircle color={dnvgreenlight} />
+                                <StatNumber m={10}>{`${co2.toFixed(2)} tonnes Co2`}</StatNumber>
+                                {co2 > 5000 ? (
+                                    <AiFillWarning color="red" />
+                                ) : co2 > 4500 ? (
+                                    <AiOutlineExclamationCircle color="orange" />
+                                ) : (
+                                    <AiFillCheckCircle color={dnvgreenlight} />
+                                )}
                             </Stat>
                         </Box>
                         <Box>
@@ -57,7 +67,7 @@ const Vessel = ({ ship }: Props) => {
                                 </StatLabel>
                                 <StatNumber m={10}>{formatMoney(cost)}</StatNumber>
                                 {cost > 55000 ? (
-                                    <AiFillWarning color="#red" />
+                                    <AiFillWarning color="red" />
                                 ) : cost > 45000 ? (
                                     <AiOutlineExclamationCircle color="orange" />
                                 ) : (
@@ -71,7 +81,13 @@ const Vessel = ({ ship }: Props) => {
                                     Distance:
                                 </StatLabel>
                                 <StatNumber m={10}>{`${time.toFixed(0)} hours`}</StatNumber>
-                                <AiFillCheckCircle color={dnvgreenlight} />
+                                {time > 1500 ? (
+                                    <AiFillWarning color="red" />
+                                ) : time > 1350 ? (
+                                    <AiOutlineExclamationCircle color="orange" />
+                                ) : (
+                                    <AiFillCheckCircle color={dnvgreenlight} />
+                                )}
                             </Stat>
                         </Box>
                     </Grid>
