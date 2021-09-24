@@ -48,7 +48,7 @@ const Vessel = ({ vesselName, co2, time, cost }: Props) => (
                                 <StatLabel color={dnvgreendark} fontSize="small">
                                     Emission:
                                 </StatLabel>
-                                <StatNumber m={10}>{`${co2.toFixed(2)} tonnes Co2`}</StatNumber>
+                                <StatNumber m={10}>{`${co2.toFixed(0)} tonnes Co2`}</StatNumber>
                                 <AiFillCheckCircle color={dnvgreenlight} />
                             </Stat>
                         </Box>
