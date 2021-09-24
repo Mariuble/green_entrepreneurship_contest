@@ -21,7 +21,15 @@ const dnvbluelight = '#8CD3EF';
 const dnvgreendark = 'rgb(63, 156, 53)';
 const dnvgreenlight = '#65B33A';
 
-const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, distance: 300 } }) => (
+interface Props {
+    vesselName: string;
+    co2: number;
+    time: number;
+    cost: number;
+}
+
+// const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, distance: 300 } }) => (
+const Vessel = ({ vesselName, co2, time, cost }: Props) => (
     <div>
         <Accordion allowToggle m={10}>
             <AccordionItem>
@@ -33,13 +41,13 @@ const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, di
                         color="#002A3E"
                         p={10}
                     >
-                        <Box textAlign="left" verticalAlign="top" left={0}>{`${vessel.name}`}</Box>
+                        <Box textAlign="left" verticalAlign="top" left={0}>{`${vesselName}`}</Box>
                         <Box>
                             <Stat>
                                 <StatLabel color={dnvgreendark} fontSize="small">
                                     Emission:
                                 </StatLabel>
-                                <StatNumber m={10}>{`${vessel.emission} Co2`}</StatNumber>
+                                <StatNumber m={10}>{`${co2.toFixed(2)} tonnes Co2`}</StatNumber>
                                 <AiFillCheckCircle color={dnvgreenlight} />
                             </Stat>
                         </Box>
@@ -48,10 +56,10 @@ const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, di
                                 <StatLabel color={dnvgreendark} fontSize="small">
                                     Price:
                                 </StatLabel>
-                                <StatNumber m={10}>{`$${vessel.price}`}</StatNumber>
-                                {vessel.price > 55000 ? (
+                                <StatNumber m={10}>{`$${cost.toFixed(0)}`}</StatNumber>
+                                {cost > 55000 ? (
                                     <AiFillWarning color="#red" />
-                                ) : vessel.price > 45000 ? (
+                                ) : cost > 45000 ? (
                                     <AiOutlineExclamationCircle color="orange" />
                                 ) : (
                                     <AiFillCheckCircle color={dnvgreenlight} />
@@ -63,7 +71,7 @@ const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, di
                                 <StatLabel color={dnvgreendark} fontSize="small">
                                     Distance:
                                 </StatLabel>
-                                <StatNumber m={10}>{`${vessel.distance}km`}</StatNumber>
+                                <StatNumber m={10}>{`${time.toFixed(0)} hours`}</StatNumber>
                                 <AiFillCheckCircle color={dnvgreenlight} />
                             </Stat>
                         </Box>
@@ -98,7 +106,7 @@ const Vessel = ({ vessel = { name: 'Lers M/S', emission: 300, price: 54.6887, di
                                     <StatLabel color={dnvgreendark} fontSize="small">
                                         {`${Vessel.name}`}
                                     </StatLabel>
-                                    <StatNumber m={10}>{`${vessel.distance}km`}</StatNumber>
+                                    <StatNumber m={10}>{`${time.toFixed(0)} hours`}</StatNumber>
                                 </Stat>
                             </Box>
                             <Box>
