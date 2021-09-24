@@ -44,7 +44,7 @@ const Vessel = ({ ship }: Props) => {
                     <Grid templateColumns="repeat(4, 1fr)" w="100%" justifyContent="space-around" color="#002A3E">
                         <Box>
                             <Grid>
-                                <GridItem>{`${vesselName}`}</GridItem>
+                                <GridItem display="flex" justifyContent="center">{`${vesselName}`}</GridItem>
                                 <GridItem display="flex" justifyContent="center" textAlign="center">
                                     <GiShipWheel size="2em" />
                                 </GridItem>
