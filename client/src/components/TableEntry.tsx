@@ -56,7 +56,7 @@ const TableEntry = ({ ship, vesselName, recommended, co2, cost, time, avgCost, a
             <Td>
                 <Flex>
                     {`${time.toFixed(0)} hours`}{' '}
-                    {time > avgTime + 200 ? (
+                    {time > avgTime + 50 ? (
                         <AiFillWarning color="red" />
                     ) : time > avgTime ? (
                         <AiOutlineExclamationCircle color="orange" />
