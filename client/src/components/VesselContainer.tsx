@@ -3,6 +3,7 @@ import { ShipContext } from '../context/ShipContext';
 import { Flex, Box, Spacer, Center } from '@chakra-ui/react';
 import Vessel from './Vessel';
 import LeafletMap from './LeafletMap';
+import TableEntry from './TableEntry';
 
 const VesselContainer = () => {
     const { ships } = useContext(ShipContext).state;
@@ -12,10 +13,18 @@ const VesselContainer = () => {
     return (
         <Box h="100vh">
             <Flex direction="row">
-                <Box w="50%" bg="green">
-                    {ships.map((ship, i) => (
-                        <Vessel ship={ship} recommended={i === 0 ? true : false} />
-                    ))}
+                <Box w="80%">
+                    <Vessel>
+                        {ships.map((ship, i) => (
+                            <TableEntry
+                                vesselName={ship.vesselName}
+                                recommended={i === 0 ? true : false}
+                                co2={ship.co2}
+                                cost={ship.cost}
+                                time={ship.time}
+                            />
+                        ))}
+                    </Vessel>
                 </Box>
                 <LeafletMap />
             </Flex>
